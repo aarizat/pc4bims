@@ -211,7 +211,7 @@ class CirclePacking:
                 polygon = Polygon(coordinates)
                 boundCoords = polygon.boundCoords
                 circlePacking = CP(boundCoords, depth=3)
-                pckCircles.plot(plotTriMesh=True)
+                circlePacking.plot(plotTriMesh=True)
 
                 from numpy import array
                 from pc4bims.basegeom import Polygon
@@ -255,7 +255,7 @@ class CirclePacking:
 
         # plotting
         fig = plt.figure()
-        ax = fig.add_subplot(121)
+        ax = fig.add_subplot(111)
         ax.plot(np.hstack((self.coordinates[:, 0], self.coordinates[0, 0])),
                 np.hstack((self.coordinates[:, 1], self.coordinates[0, 1])),
                 '-k', lw=1.5, label='Polygon')
@@ -290,8 +290,8 @@ class CirclePacking:
                                      [7, 1], [4.5, 1], [4, 0]])
                 polygon = Polygon(coordinates)
                 boundCoords = polygon.boundCoords
-                pckCircles = CP(boundCoords, 10)
-                pckCircles.frecuencyHist()
+                circlePacking = CP(boundCoords, 10)
+                circlePacking.frecuencyHist()
         '''
 
         # Obtaining diameters histogram
@@ -327,8 +327,8 @@ class CirclePacking:
                                      [7, 1], [4.5, 1], [4, 0]])
                 polygon = Polygon(coordinates)
                 boundCoords = polygon.boundCoords
-                pckCircles = CP(boundCoords, 10)
-                pckCircles.loglogDiagram()
+                circlePacking = CP(boundCoords, 10)
+                circlePacking.loglogDiagram()
         '''
 
         # Obtaining diameters histogram
