@@ -17,17 +17,20 @@ PC4BIMS : Pack Circles for BIMS
 .. |orcid| image:: https://img.shields.io/badge/id-0000--0003--0619--8735-brightgreen.svg?style=flat-square
    :target: https://orcid.org/0000-0003-0619-8735
 
+|made-with-python| |PyPI| |docs| |License|
+
 ``pc4bims`` is an application software in **Python 3** to create circle packing
 in arbitrary poygons.
 
 
-
+.. figure:: https://rawgit.com/aarizat/pc4bims/master/figures/Figure_1.svg
+        :alt: plot example1
 
 
 Features
 --------
 
-* Free software: BSD license
+* Free software: `BSD-2-Clause <https://opensource.org/licenses/BSD-2-Clause>`_.
 * Documentation: https://pc4bims.readthedocs.io.
 * PyPI: https://pypi.python.org/pypi/pc4bims
 
