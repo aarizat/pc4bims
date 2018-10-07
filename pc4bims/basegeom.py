@@ -57,98 +57,6 @@ class Circle:
         self.area = np.pi * radius**2
         self.perimeter = 2 * radius * np.pi
 
-    def descartesTheorem(self, circle1, circle2=None):
-        '''
-        Method to determine the tangent circles of the `Descartes theorem\
-        <https://en.wikipedia.org/wiki/Descartes%27_theorem#Special_cases>`_.
-
-        To find centers of these circles, it calculates the
-        intersection points of two circles by using the construction of
-        triangles, proposed by `Paul Bourke, 1997\
-        <http://paulbourke.net/geometry/circlesphere/>`_.
-
-        Parameters
-        ----------
-            circle1 : `circle` object
-                Tangent circle to the circle object intantiated.
-            circle2 : `circle` object
-                Tangent circle to the circle object intantiated and to the\
-                `circle1`.
-
-       Returns
-       -------
-           circles : `tuple`
-               Each element of the tuple is a circle object.
-
-       Examples
-       --------
-           >>> import matplotlib.pyplot as plt
-           >>> from pc4bims.basegeom import Circle
-           >>> # Special case Descartes' Theorem (cicle with infite radius)
-           >>> circle = Circle((4.405957, 2.67671461), 0.8692056336001268)
-           >>> circle1 = Circle((3.22694724, 2.10008003), 0.4432620600509628)
-           >>> c2, c3 = circle.descartesTheorem(circle1)
-           >>> # plotting
-           >>> plt.axes()
-           >>> plt.gca().add_patch(plt.Circle(circle.center,
-                                   circle.radius, fill=False))
-           >>> plt.gca().add_patch(plt.Circle(circle1.center,
-                                   circle1.radius, fill=False))
-           >>> plt.gca().add_patch(plt.Circle(c2.center,
-                                   c2.radius, fc='r'))
-           >>> plt.gca().add_patch(plt.Circle(c3.center,
-                                   c3.radius, fc='r'))
-           >>> plt.axis('equal')
-           >>> plt.show()
-
-           >>> import matplotlib.pyplot as plt
-           >>> from pc4bims.basegeom import Circle
-           >>> # General case Descartes Theorem (three circle tangent mutually)
-           >>> circle = Circle((4.405957, 2.67671461), 0.8692056336001268)
-           >>> circle1 = Circle((3.22694724, 2.10008003), 0.4432620600509628)
-           >>> circle2 = Circle((3.77641134, 1.87408749), 0.1508620255299397)
-           >>> c3, c4 = circle.descartesTheorem(circle1, circle2)
-           >>> # plotting
-           >>> plt.axes()
-           >>> plt.gca().add_patch(plt.Circle(circle.center,
-                                   circle.radius, fill=False))
-           >>> plt.gca().add_patch(plt.Circle(circle1.center,
-                                   circle1.radius, fill=False))
-           >>> plt.gca().add_patch(plt.Circle(circle2.center,
-                                   circle2.radius, fill=False))
-           >>> plt.gca().add_patch(plt.Circle(c3.center,
-                                   c3.radius, fc='r'))
-           >>> plt.axis('equal')
-           >>> plt.show()
-        '''
-
-        if circle2 is None:
-            # Special case Descartes' theorem
-            radius = (self.curvature + circle1.curvature +
-                      2*(self.curvature*circle1.curvature)**0.5)**-1
-        else:
-            # General case Descartes Theorem
-            radius = (self.curvature + circle1.curvature +
-                      circle2.radius + circle2.curvature +
-                      2*((self.curvature*circle1.curvature) +
-                         (circle1.curvature*circle2.curvature) +
-                         (circle2.curvature*self.curvature))**0.5)**-1
-        # Distances between centers and intersection points
-        R1, R2 = self.radius + radius, circle1.radius + radius
-        # Distance between the centers of the intersected circles
-        dist = self.radius + circle1.radius
-        cos, sin = (circle1.center - self.center) / dist
-        # Distance to the chord
-        chordDist = (R1**2 - R2**2 + dist**2) / (2*dist)
-        # Half-length of the chord
-        halfChord = (R1**2 - chordDist**2)**0.5
-        center3 = (self.center[0] + chordDist*cos - halfChord*sin,
-                   self.center[1] + chordDist*sin + halfChord*cos)
-        center4 = (self.center[0] + chordDist*cos + halfChord*sin,
-                   self.center[1] + chordDist*sin - halfChord*cos)
-        circles = Circle(center3, radius), Circle(center4, radius)
-        return circles
-
 
 # %%
 class Triangle:
@@ -293,15 +201,6 @@ class Triangle:
                     center = np.array(c_0.center) + dist/auxDist * (
                             np.array(vert) - np.array(c_0.center))
                     c_1 = Circle(center, radius)
-                    # Genereting circles within triangle (Descartes circles)
-                    c_11, c_12 = c_0.descartesTheorem(c_1)
-                    c_113, c_123 = c_0.descartesTheorem(c_1, c_11)
-                    _, c_111 = c_1.descartesTheorem(c_11)
-                    c_121, _ = c_1.descartesTheorem(c_12)
-                    c_112, _ = c_0.descartesTheorem(c_11)
-                    _, c_122 = c_0.descartesTheorem(c_12)
-                    # listCircles.extend((c_1, c_11, c_12, c_113, c_123, c_111,
-                    #                    c_121, c_112, c_122))
                     listCircles.append(c_1)
                     # Updating variables
                     auxDist = euclidean(vert, c_1.center)
@@ -314,15 +213,6 @@ class Triangle:
                     center = np.array(c_0.center) + dist/auxDist * (
                             np.array(vert) - np.array(c_0.center))
                     c_1 = Circle(center, radius)
-                    # Genereting circles within triangle (Descartes circles)
-                    # c_11, c_12 = c_0.descartesTheorem(c_1)
-                    # c_113, c_123 = c_0.descartesTheorem(c_1, c_11)
-                    # _, c_111 = c_1.descartesTheorem(c_11)
-                    # c_121, _ = c_1.descartesTheorem(c_12)
-                    # c_112, _ = c_0.descartesTheorem(c_11)
-                    # _, c_122 = c_0.descartesTheorem(c_12)
-                    # listCircles.extend((c_1, c_11, c_12, c_113, c_123, c_111,
-                    #                    c_121, c_112, c_122))
                     listCircles.append(c_1)
                     # Updating variables
                     auxDist = euclidean(vert, c_1.center)

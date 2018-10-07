@@ -39,9 +39,9 @@ class CirclePacking:
         >>> from numpy import array
         >>> from pc4bims.circlepacking import CirclePacking as CP
         >>> coords = array([[1, 1], [2, 5], [4.5, 6], [8, 3], [7, 1], [4, 0]])
-        >>> pckCircles = CP(coords)
-        >>> pckCircles.__dict__.keys()
-        dict_keys(['coordinates', 'depth', 'CDT', 'listCircles'])
+        >>> circlePacking = CP(coords)
+        >>> circlePacking.__dict__.keys()
+        dict_keys(['coordinates', 'depth', 'CDT', 'circlesInPoly'])
     '''
 
     def __init__(self, coordinates, depth=None):
