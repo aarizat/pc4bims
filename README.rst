@@ -1,5 +1,5 @@
 ===============================
-PC4BIMS : Pack Circles for BIMS
+pc4BIMS : Pack Circles for BIMS
 ===============================
 
 .. |made-with-python| image:: https://img.shields.io/badge/Made%20with-Python-brightgreen.svg?style=flat-square
@@ -17,10 +17,10 @@ PC4BIMS : Pack Circles for BIMS
 .. |orcid| image:: https://img.shields.io/badge/id-0000--0003--0619--8735-brightgreen.svg?style=flat-square
    :target: https://orcid.org/0000-0003-0619-8735
 
-|made-with-python| |PyPI| |docs| |License|
+|made-with-python| |PyPI| |docs| |License| |ORCID|
 
 ``pc4bims`` is an application software in **Python 3** to create circle packing
-in arbitrary poygons.
+in arbitrary polygons.
 
 
 .. figure:: https://rawgit.com/aarizat/pc4bims/master/figures/Figure_1.svg
