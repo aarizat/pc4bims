@@ -1,5 +1,5 @@
 ``basegeom``
-=========
+============
 
 .. automodule:: basegeom
     :members:

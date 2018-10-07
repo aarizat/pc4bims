@@ -1,5 +1,5 @@
 ``circlepacking``
-=========
+=================
 
 .. automodule:: circlepacking
     :members:
