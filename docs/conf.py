@@ -57,7 +57,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PC4BIMS'
+project = u'pc4BIMS'
 copyright = u"2018, Andres Ariza-Triana & Ludger O. Suarez-Burgoa"
 author = u"Andres Ariza-Triana & Ludger O. Suarez-Burgoa"
 
@@ -139,7 +139,7 @@ latex_elements = {
 # [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'pc4bims.tex',
-     u'PC4BIMS Documentation',
+     u'pc4BIMS Documentation',
      u'Andres Ariza-Triana & Ludger O. Suarez-Burgoa', 'manual'),
 ]
 
@@ -150,7 +150,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'pc4bims',
-     u'PC4BIMS Documentation',
+     u'pc4BIMS Documentation',
      [author], 1)
 ]
 
@@ -162,7 +162,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'pc4bims',
-     u'PC4BIMS Documentation',
+     u'pc4BIMS Documentation',
      author,
      'pc4bims',
      'One line description of project.',
